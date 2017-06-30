@@ -177,6 +177,7 @@ public class ThongKeFrm extends javax.swing.JFrame {
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
          int row = tblResult.getSelectedRow();
          DaiLyThongKe daiLy = list.get(row);
+         new ChiTietFrm(daiLy).setVisible(true);
     }//GEN-LAST:event_btnChiTietActionPerformed
 
     /**
