@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +24,8 @@ public class ThongKeFrm extends javax.swing.JFrame {
     /**
      * Creates new form ThongKeFrm
      */
-    static String colTieuDe[]= new String[]{"Ma Dai Ly","Ten Dai Ly","So dien thoai","Dia Chi","So tien tieu thu","chi tiet"};
+    private ArrayList<DaiLyThongKe> list;
+    static String colTieuDe[]= new String[]{"Ma Dai Ly","Ten Dai Ly","So dien thoai","Dia Chi","So tien tieu thu"};
     public ThongKeFrm() {
         initComponents();
        
@@ -49,6 +51,7 @@ public class ThongKeFrm extends javax.swing.JFrame {
         btnThongKe = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblResult = new javax.swing.JTable();
+        btnChiTiet = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,6 +98,13 @@ public class ThongKeFrm extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblResult);
 
+        btnChiTiet.setText("xem chi tiet");
+        btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,7 +116,10 @@ public class ThongKeFrm extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThongKe)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnThongKe)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnChiTiet))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtBatDau)
                         .addComponent(txtKetThuc, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
@@ -128,8 +141,10 @@ public class ThongKeFrm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnThongKe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThongKe)
+                    .addComponent(btnChiTiet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -146,7 +161,7 @@ public class ThongKeFrm extends javax.swing.JFrame {
         String ngayKetThuc = txtKetThuc.getText();
         ThongKeDAO dao = new ThongKeDAO();
         dao.getConnection();
-        ArrayList<DaiLyThongKe> list = dao.thongKeDaiLy(ngayBatDau, ngayKetThuc);
+        list = dao.thongKeDaiLy(ngayBatDau, ngayKetThuc);
         ArrayList<JButton> listBtn = new ArrayList<>();
         DefaultTableModel model = new DefaultTableModel(colTieuDe,0);
         model.setRowCount(0);
@@ -158,6 +173,11 @@ public class ThongKeFrm extends javax.swing.JFrame {
         }
         tblResult.setModel(model);
     }//GEN-LAST:event_btnThongKeActionPerformed
+
+    private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
+         int row = tblResult.getSelectedRow();
+         DaiLyThongKe daiLy = list.get(row);
+    }//GEN-LAST:event_btnChiTietActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +215,7 @@ public class ThongKeFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -54,7 +54,11 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnThongKe" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btnThongKe" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="btnChiTiet" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="txtBatDau" max="32767" attributes="0"/>
                       <Component id="txtKetThuc" pref="148" max="32767" attributes="0"/>
@@ -83,8 +87,11 @@
                   <Component id="txtKetThuc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnThongKe" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnThongKe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="275" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -138,5 +145,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnChiTiet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="xem chi tiet"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChiTietActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
